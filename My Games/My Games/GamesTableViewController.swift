@@ -9,6 +9,9 @@ import UIKit
 import CoreData
 
 class GamesTableViewController: UITableViewController {
+    
+    // Classe que da acesso a pesquisas no CoreData
+    var fetchResultController: NSFetchedResultsController<Game>!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -19,7 +22,17 @@ class GamesTableViewController: UITableViewController {
         let fetchRequest: NSFetchRequest<Game> = Game.fetchRequest()
         let sortDescritor = NSSortDescriptor(key: "title", ascending: true)
         
+        // Pode ser passado mais de um descritor
         fetchRequest.sortDescriptors = [sortDescritor]
+        
+        fetchResultController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: context, sectionNameKeyPath: nil, cacheName: nil)
+        fetchResultController.delegate = self
+        
+        do {
+            try fetchResultController.performFetch()
+        } catch {
+            print(error.localizedDescription)
+        }
     }
     
     // MARK: - Table view data source
@@ -89,4 +102,8 @@ class GamesTableViewController: UITableViewController {
     }
     */
 
+}
+
+extension GamesTableViewController: NSFetchedResultsControllerDelegate {
+    
 }
