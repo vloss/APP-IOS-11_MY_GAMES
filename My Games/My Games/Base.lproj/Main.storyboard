@@ -33,13 +33,13 @@
                                             </constraints>
                                         </imageView>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EbB-CD-8i0">
-                                            <rect key="frame" x="71" y="6" width="275.66666666666669" height="24"/>
+                                            <rect key="frame" x="71" y="6" width="275.66666666666663" height="24"/>
                                             <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Console" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hfG-94-q9b">
-                                            <rect key="frame" x="71" y="38" width="275.66666666666669" height="21"/>
+                                            <rect key="frame" x="71" y="38" width="275.66666666666663" height="21"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="21" id="wEt-cB-iF9"/>
                                             </constraints>
@@ -305,6 +305,9 @@
                                 <rect key="frame" x="16" y="371" width="361" height="333"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title="Toque para adicionar a imagem de capa"/>
+                                <connections>
+                                    <action selector="addEditCover:" destination="7pW-p3-xxd" eventType="touchUpInside" id="oNA-uq-lYJ"/>
+                                </connections>
                             </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="nhc-p7-pGg"/>
