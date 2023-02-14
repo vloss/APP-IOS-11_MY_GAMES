@@ -21,7 +21,7 @@ class AddEditViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-    
+        tfTitle.resignFirstResponder()
     }
     
     @IBAction func addEditGame(_ sender: UIButton) {
@@ -42,6 +42,15 @@ class AddEditViewController: UIViewController {
         // Volta para tela anterior
         navigationController?.popViewController(animated: true)
     }
+    
+    
+    // Toda vez que é tocado em qualquer lugar na tela
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        // Fecha o teclado
+        view.endEditing(true)
+        //setValues()
+    }
+    
     
     @IBAction func addEditCover(_ sender: UIButton) {
         

@@ -298,7 +298,7 @@
                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                 <state key="normal" title="ADICIONAR"/>
                                 <connections>
-                                    <action selector="addEdit:" destination="7pW-p3-xxd" eventType="touchUpInside" id="ezN-tD-9Gw"/>
+                                    <action selector="addEditGame:" destination="7pW-p3-xxd" eventType="touchUpInside" id="1MW-5s-Kuk"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eQD-iH-rwz">
@@ -343,7 +343,6 @@
                     </view>
                     <navigationItem key="navigationItem" title="Adicionar Novo Jogo" largeTitleDisplayMode="never" id="IeA-fm-0Fq"/>
                     <connections>
-                        <outlet property="btAddEdit" destination="0tC-M6-TnM" id="XVG-1h-fl0"/>
                         <outlet property="btCover" destination="eQD-iH-rwz" id="I0i-j1-Xi9"/>
                         <outlet property="dpReleaseDate" destination="D0X-WT-4kk" id="ivo-1d-3GE"/>
                         <outlet property="ivCover" destination="Rkf-6B-EyB" id="f6F-6b-dbc"/>
