@@ -18,10 +18,24 @@ class AddEditViewController: UIViewController {
     
     var game: Game!
     
+    // lazy só constroi uma classe quando for utiliza-la
+    lazy var pickerView: UIPickerView = {
+       let pickerView = UIPickerView()
+        pickerView.delegate = self
+        pickerView.dataSource = self
+        return pickerView
+    }()
+    var consolesManager = ConsolesManager.shared
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        tfTitle.resignFirstResponder()
+        //tfTitle.resignFirstResponder()
+        tfConsole.inputView = pickerView
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        consolesManager.loadConsoles(with: context)
     }
     
     @IBAction func addEditGame(_ sender: UIButton) {
@@ -54,5 +68,21 @@ class AddEditViewController: UIViewController {
     
     @IBAction func addEditCover(_ sender: UIButton) {
         
+    }
+}
+
+extension AddEditViewController: UIPickerViewDelegate, UIPickerViewDataSource{
+    // Número de linhas exibidas.
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
+        return 1
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        return consolesManager.consoles.count
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        let console = consolesManager.consoles[row]
+        return console.name
     }
 }
