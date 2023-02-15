@@ -8,10 +8,17 @@
 import UIKit
 
 class ConsolesTableViewController: UITableViewController {
+    
+    var consoleManager = ConsolesManager.shared
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        loadConsoles()
+    }
+    
+    func loadConsoles(){
+        consoleManager.loadConsoles(with: context)
+        tableView.reloadData()
     }
 
     @IBAction func addConsole(_ sender: UIBarButtonItem) {
@@ -19,26 +26,20 @@ class ConsolesTableViewController: UITableViewController {
     }
     
     // MARK: - Table view data source
-
-    override func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
-        return 0
-    }
-
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
-        return 0
+        return consoleManager.consoles.count
     }
 
-    /*
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
 
-        // Configure the cell...
+        // Carrega o registro para atribuir a cell
+        let console = consoleManager.consoles[indexPath.row]
+        
+        cell.textLabel?.text = console.name
 
         return cell
     }
-    */
 
     /*
     // Override to support conditional editing of the table view.
