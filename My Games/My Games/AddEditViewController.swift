@@ -30,7 +30,30 @@ class AddEditViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         //tfTitle.resignFirstResponder()
+        
+        let toolbar = UIToolbar(frame: CGRect(x: 0, y: 0, width: view.frame.width, height: 44))
+        toolbar.tintColor = UIColor(named: "main")
+        
+        let btCancel = UIBarButtonItem(barButtonSystemItem: .cancel, target: self, action: #selector(cancel))
+        let btDone  = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(done))
+        toolbar.items = [btCancel, btDone]
+        
+        
         tfConsole.inputView = pickerView
+        tfConsole.inputAccessoryView = toolbar
+    }
+    
+    @objc func cancel(){
+        tfConsole.resignFirstResponder()
+    }
+    
+    @objc func done(){
+        
+        var index = pickerView.selectedRow(inComponent: 0)
+        
+        tfConsole.text = consolesManager.consoles[index].name
+        
+        cancel()
     }
     
     override func viewWillAppear(_ animated: Bool) {
