@@ -22,6 +22,7 @@ class GamesTableViewController: UITableViewController {
         label.textAlignment = .center
     }
 
+    // Listagem utilizada para grandes quantidades de dados e para quando necessita de mais recursos
     func loadGames(){
         let fetchRequest: NSFetchRequest<Game> = Game.fetchRequest()
         let sortDescritor = NSSortDescriptor(key: "title", ascending: true)
