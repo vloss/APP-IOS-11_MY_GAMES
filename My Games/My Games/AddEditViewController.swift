@@ -36,7 +36,8 @@ class AddEditViewController: UIViewController {
         
         let btCancel = UIBarButtonItem(barButtonSystemItem: .cancel, target: self, action: #selector(cancel))
         let btDone  = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(done))
-        toolbar.items = [btCancel, btDone]
+        let blFlexibleSpace = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
+        toolbar.items = [btCancel, blFlexibleSpace, btDone]
         
         
         tfConsole.inputView = pickerView
@@ -69,6 +70,11 @@ class AddEditViewController: UIViewController {
         
         game.title = tfTitle.text
         game.releaseDate = dpReleaseDate.date
+        
+        if !tfConsole.text!.isEmpty {
+            let console = consolesManager.consoles[pickerView.selectedRow(inComponent: 0)]
+            game.console = console
+        }
         
         do {
             try context.save()
