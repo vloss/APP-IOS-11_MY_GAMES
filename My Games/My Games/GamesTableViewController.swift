@@ -21,6 +21,16 @@ class GamesTableViewController: UITableViewController {
         label.text = "Você não tem jogos cadastrados."
         label.textAlignment = .center
     }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier! == "gameSegue"{
+            let vc = segue.destination as! GameViewController
+            
+            if let games = fetchResultController.fetchedObjects {
+                vc.game = games[tableView.indexPathForSelectedRow!.row]
+            }
+        }
+    }
 
     // Listagem utilizada para grandes quantidades de dados e para quando necessita de mais recursos
     func loadGames(){

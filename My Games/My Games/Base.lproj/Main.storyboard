@@ -33,13 +33,13 @@
                                             </constraints>
                                         </imageView>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EbB-CD-8i0">
-                                            <rect key="frame" x="71" y="6" width="275.66666666666663" height="24"/>
+                                            <rect key="frame" x="71" y="6" width="275.66666666666669" height="24"/>
                                             <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Console" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hfG-94-q9b">
-                                            <rect key="frame" x="71" y="38" width="275.66666666666663" height="21"/>
+                                            <rect key="frame" x="71" y="38" width="275.66666666666669" height="21"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="21" id="wEt-cB-iF9"/>
                                             </constraints>
@@ -64,7 +64,7 @@
                                     <outlet property="ivCover" destination="6PQ-6T-YPd" id="E1s-DG-ufw"/>
                                     <outlet property="lbConsole" destination="hfG-94-q9b" id="kwK-oI-mwf"/>
                                     <outlet property="lbTitle" destination="EbB-CD-8i0" id="bgF-CK-GBO"/>
-                                    <segue destination="bo5-ag-f1H" kind="show" id="4Cr-zw-vs0"/>
+                                    <segue destination="bo5-ag-f1H" kind="show" identifier="gameSegue" id="4Cr-zw-vs0"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -76,7 +76,7 @@
                     <navigationItem key="navigationItem" title="Lista de Jogos" id="Esu-IO-hy3">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="nIb-So-GJ9">
                             <connections>
-                                <segue destination="7pW-p3-xxd" kind="show" id="7Vg-Lz-tll"/>
+                                <segue destination="7pW-p3-xxd" kind="show" identifier="newGameSegue" id="7Vg-Lz-tll"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -343,6 +343,7 @@
                     </view>
                     <navigationItem key="navigationItem" title="Adicionar Novo Jogo" largeTitleDisplayMode="never" id="IeA-fm-0Fq"/>
                     <connections>
+                        <outlet property="btAddEdit" destination="0tC-M6-TnM" id="Hi8-qH-2VR"/>
                         <outlet property="btCover" destination="eQD-iH-rwz" id="I0i-j1-Xi9"/>
                         <outlet property="dpReleaseDate" destination="D0X-WT-4kk" id="ivo-1d-3GE"/>
                         <outlet property="ivCover" destination="Rkf-6B-EyB" id="f6F-6b-dbc"/>
@@ -376,7 +377,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="oO2-sl-t84"/>
+        <segue reference="7Vg-Lz-tll"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="console" width="23" height="23"/>
