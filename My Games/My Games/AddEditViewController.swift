@@ -46,6 +46,8 @@ class AddEditViewController: UIViewController {
                 btCover.setTitle("", for: .normal)
             }
         }
+        
+        prepareConsoleTextField()
     }
 
     func prepareConsoleTextField(){
