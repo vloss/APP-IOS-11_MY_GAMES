@@ -26,10 +26,14 @@ class GamesTableViewController: UITableViewController {
         navigationItem.searchController = searchController
         searchController.searchBar.delegate = self
         
-        loadGames()
-        
         label.text = "Você não tem jogos cadastrados."
         label.textAlignment = .center
+        
+        loadGames()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        tableView.reloadData()
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
