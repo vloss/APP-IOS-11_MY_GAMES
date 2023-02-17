@@ -13,9 +13,19 @@ class GamesTableViewController: UITableViewController {
     // Classe que da acesso a pesquisas no CoreData
     var fetchResultController: NSFetchedResultsController<Game>!
     var label = UILabel()
+    var searchController = UISearchController(searchResultsController: nil)
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        searchController.searchResultsUpdater = self
+        searchController.dimsBackgroundDuringPresentation = false
+        searchController.searchBar.tintColor = .white
+        searchController.searchBar.barTintColor = .white
+        
+        navigationItem.searchController = searchController
+        searchController.searchBar.delegate = self
+        
         loadGames()
         
         label.text = "Você não tem jogos cadastrados."
@@ -33,12 +43,18 @@ class GamesTableViewController: UITableViewController {
     }
 
     // Listagem utilizada para grandes quantidades de dados e para quando necessita de mais recursos
-    func loadGames(){
+    func loadGames(filtering: String = ""){
         let fetchRequest: NSFetchRequest<Game> = Game.fetchRequest()
         let sortDescritor = NSSortDescriptor(key: "title", ascending: true)
         
         // Pode ser passado mais de um descritor
         fetchRequest.sortDescriptors = [sortDescritor]
+        
+        if !filtering.isEmpty{
+            // case insensitive [c]
+            let predicate = NSPredicate(format: "title contains [c] %@", filtering)
+            fetchRequest.predicate = predicate
+        }
         
         fetchResultController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: context, sectionNameKeyPath: nil, cacheName: nil)
         fetchResultController.delegate = self
@@ -130,5 +146,20 @@ extension GamesTableViewController: NSFetchedResultsControllerDelegate {
             default:
                 tableView.reloadData()
         }
+    }
+}
+
+extension GamesTableViewController: UISearchResultsUpdating, UISearchBarDelegate {
+    func updateSearchResults(for searchController: UISearchController) {
+    }
+    
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        loadGames()
+        tableView.reloadData()
+    }
+    
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        loadGames(filtering: searchBar.text!)
+        tableView.reloadData()
     }
 }
